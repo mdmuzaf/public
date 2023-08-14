@@ -1,0 +1,55 @@
+<html>
+<body>
+  <h2>JSON to HTML</h2>
+  <div>
+    <label for="json">Input your JSON:</label><br>
+    <textarea id="json" rows="20" cols="50"></textarea>
+  </div>
+  <br>
+  <button id="gen">Generate</button>
+  <br><br>
+  <div>
+    <label for="html">HTML:</label><br>
+    <textarea id="html" rows="20" cols="50" readonly></textarea>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const gen = document.getElementById("gen");
+  gen.addEventListener("click", generate);
+
+  function generate() {
+    const json = document.getElementById("json").value;
+    const html = document.getElementById("html");
+
+    try {
+      const parsedJSON = JSON.parse(json);
+      const idSet = new Set();
+
+      parsedJSON.forEach(item => {
+        if (idSet.has(item.id)) {
+          throw new Error(`Error: ID Duplicated!`);
+        }
+        idSet.add(item.id);
+      });
+
+      const gHTML = parsedJSON.map(item => {
+        return `
+<div class="root" data-id="${item.id}">
+    <span class="username">${item.username}</span>
+    <span class="video_name">${item.video_name}</span>
+    <span class="additional_details">
+        <span class="type">${item.action}</span>
+    </span>
+</div>`;
+      }).join("");
+
+      html.value = gHTML;
+    } catch (error) {
+      html.value = `Error: ${error.message}`;
+    }
+  }
+});
+</script>
+</body>
+</html>
