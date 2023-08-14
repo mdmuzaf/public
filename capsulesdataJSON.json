@@ -1,63 +1,63 @@
-﻿[
+[
     {
         "capsule_id": "C106",
-        "count of missions": "3",
+        "missions": "3",
         "details": "First dragon capsule",
         "status": "Active",
         "": ""
     },
     {
         "capsule_id": "C205",
-        "count of missions": "1",
+        "missions": "1",
         "details": "InContract",
         "status": "Active",
         "": ""
     },
     {
         "capsule_id": "C203",
-        "count of missions": "0",
+        "missions": "0",
         "details": "Rumoured to be used for inflight",
         "status": "Active",
         "": ""
     },
     {
         "capsule_id": "C402",
-        "count of missions": "0",
+        "missions": "0",
         "details": "Not provided",
         "status": "Retired",
         "": ""
     },
     {
         "capsule_id": "C403",
-        "count of missions": "0",
+        "missions": "0",
         "details": "Not provided",
         "status": "Unknown",
         "": ""
     },
     {
         "capsule_id": "C404",
-        "count of missions": "0",
+        "missions": "0",
         "details": "Not provided",
         "status": "Destroyed",
         "": ""
     },
     {
         "capsule_id": "",
-        "count of missions": "",
+        "missions": "",
         "details": "",
         "status": "",
         "": ""
     },
     {
         "capsule_id": "",
-        "count of missions": "",
+        "missions": "",
         "details": "",
         "status": "",
         "": ""
     },
     {
         "capsule_id": "",
-        "count of missions": "",
+        "missions": "",
         "details": "",
         "status": "",
         "": ""
