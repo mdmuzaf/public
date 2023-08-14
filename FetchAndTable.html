@@ -1,0 +1,77 @@
+<html>
+<head>
+  <style>
+    h1 {
+      text-align: center;
+      margin-bottom: 30px
+    }
+  </style>
+  <title>Fetch And Table</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Fetch And Table</h1>
+    <form id="filter">
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option value="Active">Active</option>
+        <option value="Retired">Retired</option>
+        <option value="Unknown">Unknown</option>
+        <option value="Destroyed">Destroyed</option>
+      </select>
+      <button id="load" type="button">Load</button>
+    </form>
+    <table id="result-table">
+      <thead>
+        <tr>
+          <th>Capsule ID</th>
+          <th>No of missions</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const statusSelect = document.getElementById('status');
+      const loadButton = document.getElementById('load');
+      const resultTableBody = document.querySelector('#result-table tbody');
+
+      loadButton.addEventListener('click', () => {
+        const selectedStatus = statusSelect.value;
+        const filteredCapsules = data.filter(item => item.status === selectedStatus);
+        renderTable(filteredCapsules);
+      });
+
+     
+      fetch('capsulesdataJSON.json')
+        .then(response => response.json())
+        .then(jsonData => {
+          data = jsonData;
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+
+      
+      function renderTable(capsules) {
+        resultTableBody.innerHTML = '';
+        capsules.forEach(capsule => {
+          const row = document.createElement('tr');
+          const idCell = document.createElement('td');
+          idCell.textContent = capsule.capsule_id;
+          const missionsCell = document.createElement('td');
+          missionsCell.textContent = capsule.missions.length;
+          const detailsCell = document.createElement('td');
+          detailsCell.textContent = capsule.details;
+
+          row.appendChild(idCell);
+          row.appendChild(missionsCell);
+          row.appendChild(detailsCell);
+
+          resultTableBody.appendChild(row);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
